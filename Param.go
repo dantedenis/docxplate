@@ -266,6 +266,9 @@ func (p *Param) RunTrigger(xnode *xmlNode) {
 	// 1. Scope - find affected node
 	var ntypes = NodeSingleTypes
 	switch p.Trigger.Scope {
+	case TriggerScopePlaceholder:
+		xnode.ReplaceInContents([]byte(p.Placeholder()), []byte(p.Value))
+		return
 	case TriggerScopeCell:
 		ntypes = NodeCellTypes
 	case TriggerScopeRow:

@@ -3,6 +3,7 @@ package docxplate
 import (
 	"bytes"
 	"encoding/xml"
+	"log"
 	"strings"
 	"sync"
 )
@@ -23,6 +24,7 @@ func (t *Template) triggerMissingParams(xnode *xmlNode) {
 		}
 		p := NewParamFromRaw(n.AllContents())
 		if p != nil && p.Trigger != nil {
+			log.Println("triggered")
 			triggerParams = append(triggerParams, p)
 		}
 	})

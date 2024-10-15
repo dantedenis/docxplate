@@ -46,9 +46,6 @@ func JSONToParams(buf []byte) ParamList {
 	}
 	// to filtered/clean map
 	params := mapToParams(m)
-	params.Walk(func(p *Param) {
-		// use Walk func built-in logic to assign keys
-	})
 
 	return params
 }
@@ -86,6 +83,9 @@ func mapToParams(m map[string]any) ParamList {
 
 	}
 
+	params.Walk(func(p *Param) {
+		// use Walk func built-in logic to assign keys
+	})
 	return params
 }
 
